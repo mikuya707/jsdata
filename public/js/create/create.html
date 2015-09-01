@@ -22,8 +22,11 @@
 		<textarea type="text" class="form-control" placeholder="What are you trying to say?" ng-model="newPost.body" required /></textarea>
 	</div>
 
+	<pre>{{newPost | json}}</pre>
+
 	<div class="form-group">
-	<input type="submit"> <input type="button" value="Preview" ng-click="preview()">
+	<input type="submit" value="俊英" ng-click="submit(newPost)"> 
+	<input type="button" value="Preview" ng-click="preview()">
 	</div>
 </form>
 

@@ -7,6 +7,14 @@ app.factory('User', function(DS) {
   */
   var User = DS.defineResource({
        name: 'users'
+       // relations: {
+       //      belongsTo: {
+       //          users: {
+       //              localField: 'author',
+       //              localKey: 'authorId'
+       //          }
+       //      }
+       //  }
   });//
 return User;
 }).run(function(User){});

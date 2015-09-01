@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Post', function(DS) {
+app.factory('Post', function(DS, $state) {
 
 	/*
 
@@ -28,11 +28,18 @@ var Post = DS.defineResource({
         },
         methods: {
             go: function() {
-                Post.find(this._id)
-                .then(function(post) {
-                    return post;
-                });
+                // Post.find(this._id)
+                // .then(function(post) {
+                    $state.go("post", { "postId": this._id});
+                // });
+            },
+            edit: function(){
+
+            },
+            delete: function(){
+
             }
+
             
         }
     

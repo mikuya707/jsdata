@@ -7,6 +7,7 @@ app.config(function($stateProvider) {
 		controller: 'PostCtrl', 
 		resolve: {
 			thePost: function(Post, $stateParams) {
+				//console.log($stateParams.postId);
 				return Post.find($stateParams.postId);
 			}
 		}
@@ -14,10 +15,14 @@ app.config(function($stateProvider) {
 });
 
 // add necessary dependencies 
-app.controller('PostCtrl', function($scope, thePost, $state) {
-
-
+app.controller('PostCtrl', function($scope, $stateParams, thePost) {
+	console.log(thePost.author);
+	console.log(thePost);
 	$scope.post = thePost;
+	//$scope.author = $stateParams.author;
+
+	// var thePost = thePosts.
+	// console.log(thePosts);
 
 
 
