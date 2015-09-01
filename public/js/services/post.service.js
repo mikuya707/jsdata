@@ -14,6 +14,32 @@ app.factory('Post', function(DS) {
 
 	*/
 
+var Post = DS.defineResource({
+        // basePath: '/api',
+        name: 'posts',
+        // idAttribute: '_id',
+        relations: {
+            belongsTo: {
+                users: {
+                    localField: 'author',
+                    localKey: 'authorId'
+                }
+            }
+        },
+        methods: {
+            go: function() {}
+            
+        }
+    
+
+    //return Post;
+
 });
+// }).run(function(Post){
+// 	return Post;
+// });
+return Post;
+}).run(function(Post){});
+
 
 
