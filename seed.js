@@ -92,8 +92,13 @@ var seedDB = function() {
 		return randomData;
 	}
 
+	function seedUsers(){
+		return Promise.map(userSeed, function(u){
+			return UserModel.create(u)
+		})
+	}
 		
-	UserModel.create(userSeed)
+	seedUsers()
 	.then(function(users){
 		return Promise.map(postSeed, function(p) {
 			p.author = randomizeUser(users);

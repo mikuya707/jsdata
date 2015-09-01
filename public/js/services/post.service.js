@@ -27,7 +27,12 @@ var Post = DS.defineResource({
             }
         },
         methods: {
-            go: function() {}
+            go: function() {
+                Post.find(this._id)
+                .then(function(post) {
+                    return post;
+                });
+            }
             
         }
     

@@ -6,16 +6,19 @@ app.config(function($stateProvider) {
 		templateUrl: 'js/post/post.html',
 		controller: 'PostCtrl', 
 		resolve: {
-			users: function(User){
-				// GET - > '/api/users'
-				return User.findAll()
+			thePost: function(Post, $stateParams) {
+				return Post.find($stateParams.postId);
 			}
 		}
 	})
 });
 
 // add necessary dependencies 
-app.controller('PostCtrl', function() {
+app.controller('PostCtrl', function($scope, thePost, $state) {
+
+
+	$scope.post = thePost;
+
 
 
 	/* 1. FIND POST
