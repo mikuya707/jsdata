@@ -15,10 +15,11 @@ app.config(function($stateProvider) {
 });
 
 // add necessary dependencies 
-app.controller('PostCtrl', function($scope, $stateParams, thePost) {
-	console.log(thePost.author);
-	console.log(thePost);
+app.controller('PostCtrl', function($scope, thePost, Post) {
+
 	$scope.post = thePost;
+
+	console.log(thePost);
 	//$scope.author = $stateParams.author;
 
 	// var thePost = thePosts.

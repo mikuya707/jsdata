@@ -6,7 +6,7 @@
 </div>
 
 
-<form ng-submit="createNewPost()" ng-model="newPost">
+<form ng-submit="createNewPost(newPost)" ng-model="newPost">
 	<div class="form-group">
 		<label>Title</label>
 		<input type="text" class="form-control" placeholder="Title" ng-model="newPost.title" required/>
@@ -25,7 +25,7 @@
 	<pre>{{newPost | json}}</pre>
 
 	<div class="form-group">
-	<input type="submit" value="俊英" ng-click="submit(newPost)"> 
+	<input type="submit" value="俊英"> 
 	<input type="button" value="Preview" ng-click="preview()">
 	</div>
 </form>

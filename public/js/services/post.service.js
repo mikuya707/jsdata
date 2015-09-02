@@ -28,16 +28,13 @@ var Post = DS.defineResource({
         },
         methods: {
             go: function() {
-                // Post.find(this._id)
-                // .then(function(post) {
-                    $state.go("post", { "postId": this._id});
-                // });
+                $state.go("post", { "postId": this._id});
             },
             edit: function(){
 
             },
             delete: function(){
-
+                Post.destroy(this._id);
             }
 
             
