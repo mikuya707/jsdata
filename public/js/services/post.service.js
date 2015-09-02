@@ -33,6 +33,9 @@ var Post = DS.defineResource({
                     $state.go("post", { "postId": this._id});
                 // });
             },
+            // submit: function(){
+            //     $state.go("post", { "postId": this._id});
+            // }
             edit: function(){
 
             },

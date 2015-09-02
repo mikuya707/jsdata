@@ -6,9 +6,12 @@ app.config(function($stateProvider) {
 		templateUrl: 'js/create/create.html',
 		controller: 'CreateCtrl',
 		resolve: {
-			newP: function(Post, $stateParams){
-				
-				return Post.createInstance({"authorId": $stateParams.userId});
+			newA: function(User, $stateParams){
+				//console.log("id", $stateParams.userId);
+				//$scope.newPost.username = $stateParams.username;
+				return User.find($stateParams.userId).then(function(result){
+					return result;
+				});
 			}
 		}
 		/*
@@ -19,18 +22,33 @@ app.config(function($stateProvider) {
 })
 
 // add necessary dependencies here 
-app.controller('CreateCtrl', function($scope, $stateParams, newP) {
+app.controller('CreateCtrl', function($scope, $state, $stateParams, Post, User, newA) {
 
 	$scope.previewTrue = false;
-
+	console.log(newA);
 	$scope.preview = function() {
-		console.log("new", newP);
+		//console.log("new", newP);
+
 		$scope.previewTrue = !$scope.previewTrue;
 		console.log("id", $stateParams.userId);
 	}
 
 	$scope.submit = function(newPost) {
-		console.log(newPost);
+		//$scope.author = newA;
+
+		var auth = User.createInstance(newA);
+		// console.log("newA", newA);
+		console.log("author is created", auth);
+		Post.create({"title": newPost.title, "author": auth, "body": newPost.body}).then(function(post){
+			console.log("newP", post);
+			$scope.newPost = post;
+		});
+		//console.log("newP", newP);
+		// newP.save();
+		// newP.DSRefresh();
+		//console.log("POST is inserted", newP);
+		// $scope.newPost = newPost;
+		 $state.go("main");
 	}
 	/*
 
